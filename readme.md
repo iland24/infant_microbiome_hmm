@@ -1,9 +1,9 @@
-### Background and purpose:
+## Background and purpose:
 This project is a binary classifier model, whose purpose is to predict preborn infants (prematurely born babies) as growth normal (GN) or growth faltering (GF) using the infants' gut microbiome community data. Hidden Markov Model(HMM) is used to train on the microbiome data of GN and GF infant data, producing two HMM outputs. The two outputs will be used to calculate the probability of observations (P(O)) of given test data, labeling GN or GF based on higher P(O) value produced by the two models.  
 
-HMM is suitable for sequential or time series data. In this project, Infant microbiome data was collected at multiple timepoints, specifically at certain post menstral age (PMA) of each infant. Because the microbiome abundance were collected from infant fecal matter, samples were collected at varying timepoints for each infant. Among all PMA timepoint samples, 10 timepoints were selected; however, many infants have missing timepoint samples. HMM allows learning a model even when there are missing values by taking into account all possible assignments of the hidden state considering their probability, making HMM a suitable model for handling clinical data with missing values (cite paper). 
+HMM is suitable for sequential or time series data. In this project, Infant microbiome data was collected at multiple timepoints, specifically at certain post menstral age (PMA) of each infant. Because the microbiome abundance were collected from infant fecal matter, samples were collected at varying timepoints for each infant. Among all PMA timepoint samples, 10 timepoints were selected; however, many infants have missing timepoint samples. HMM allows learning a model even when there are missing values by taking into account all possible assignments of the hidden state considering their probability, making HMM a suitable model for handling clinical data with missing values. 
 
-The hidden state for each timepoint sample is assigned using MicrobeDMM - Software for fitting Dirichlet multinomial mixtures to microbial communities. DMM clustering is a probabilistic method for community detection in microbial samples (cite paper).
+The hidden state for each timepoint sample is assigned using MicrobeDMM - Software for fitting Dirichlet multinomial mixtures to microbial communities. DMM clustering is a probabilistic method for community detection in microbial samples.
 
 This project is designed so that the code runs in Unix-like systems. The writer used WSL (Windows subsystem for Linux). Scripts were coded using Python language (Python 3.7.2).
 
@@ -42,8 +42,8 @@ This project is designed so that the code runs in Unix-like systems. The writer 
 * OTU table in this project contains abundance of bacteria taxa (data type = float)
 * The first column of OTU should be the "Taxa" column that contains name of bacterial species (data type = string)
     
-### Run either single HMM output or two HMM output script
-### &emsp;infant_microbiome_hmm_main.py (single HMM output script)
+### Run either single HMM output (a) or two HMM output (b)
+### &emsp;(a)infant_microbiome_hmm_main.py (single HMM output script)
 * Preprocesses data 
     1. Select rows (taxa) with highest variance (User can define fraction of the taxa with highest variance)
     1. Select 10 timepoint samples of each infant based on start PMA timepoint
@@ -64,7 +64,7 @@ This project is designed so that the code runs in Unix-like systems. The writer 
 > python3 infant_microbiome_hmm_main.py -p './parameters.txt'
     
 
-### &emsp;infant_microbiome_two_hmm_with_labels.py (two HMM output script)
+### &emsp;(b)infant_microbiome_two_hmm_with_labels.py (two HMM output script)
 * Preprocesses data 
     * Select rows (taxa) with highest variance (User can define fraction of the taxa with highest variance)
     * Select 10 timepoint samples of each infant based on start PMA timepoint
