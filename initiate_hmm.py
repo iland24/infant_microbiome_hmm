@@ -57,12 +57,12 @@ def write_parameter_layout_txt_file():
     * '=' sign required
     * order of the parameters must be maintained.
     '''
-    parameters = ['(string) data_filepath = \n',
+    parameters = ['(string) data_filepath = data/otu_table_sample.csv\n',
                 '(float) fraction_of_taxa_selection = 0.0338\n'
                 '(int) pma_start_date (range: 0 - 273) = 196\n', 
                 '(int) n_states = 6\n', 
                 '(float) likelihood_threshold = 0.017\n',
-                '(int) n_taxa_result_to_be_displayed_in_terminal = 5']
+                '(int) n_taxa_result_to_be_displayed_in_output = 5']
                 
 
     new_path = hf.make_unique_file_or_dir_names("./parameters.txt")

@@ -1598,7 +1598,7 @@ def em_algo(data, init_i_m, init_t_m, init_e_m, threshold):
             print('Likelihood percent difference: ', percent_diff)
             print()
             if likelihoods[len(likelihoods)-2] > likelihoods[len(likelihoods)-1] and percent_diff > 0.05:
-                print("likelihood dropped more than 5%. Exclude the current likelihood that dropped.")
+                print("likelihood dropped more than 0.05. Exclude the current likelihood that dropped.")
                 return likelihoods[:len(likelihoods)-2], i_m, t_m, e_m
 
     return likelihoods, i_m, t_m, e_m
