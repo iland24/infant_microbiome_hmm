@@ -122,8 +122,13 @@ This project is designed so that the code runs in Unix-like systems. The writer 
 
 ## Further Notes
 * Additional notes are provided in the beginning of the python scripts.
-* If problem occur in running DMM code, Error message will be printed out in the terminal: "Error occured while running DMM"
-    * This is possibly due to missing library package for compiling DMM C code. If such is suspected, try installing package at the therminal by typing:
-    > sudo apt-get install libgsl0ldbl
+
+* Caveats to using DMM code:
+  * If problem occur in running DMM code, Error message will be printed out in the terminal: "Error occured while running DMM"
+  * This is possibly due to missing library package for compiling DMM C code. If such is suspected, try installing package at the therminal by typing:
+  * > sudo apt-get install libgsl0ldbl
     * visit https://askubuntu.com/questions/490465/install-gnu-scientific-library-gsl-on-ubuntu-14-04-via-terminal for more information.
-* Likelihood of the HMM is calculated using Viterbi path.
+  * When the dimension of the input data is too big, error occurs in the DMM code. So, my code is designed to check if the column number goes over 1800. DMM code doesn't run with sample data (shape=(444 x 2997)) included in infant_microbiome_hmm code. It helped to rename the column names to integers, shortening each column name. 
+  * My code initially checks if the column number of the input data goes over 1800. If it does, it trims the columns based on the starting PMA date first before running DMM. If the column number doens't go over 1800, it runs DMM first before trimmming down columns. 
+* Likelihood of the HMM is calculated using Viterbi path, not the full joint probability.
+* Infant label file must be a tsv file not a csv file. 
