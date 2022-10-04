@@ -15,8 +15,8 @@ This project is designed so that the code runs in Unix-like systems. The writer 
 * HMM outputs will be saved in hmm_outputs/hmm_out_#
     * If multiple rounds of code were ran, output of each round will be saved in a different directory with different indexing 
     
-* sample data is given at "infant_gut_microbiome_hmm/data/otu_table_sample.csv"
-* sample label is given at "infant_gut_microbiome_hmm/class_labels.tsv"
+* sample data is given at "infant_microbiome_hmm/data/otu_table_sample.csv"
+* sample label is given at "infant_microbiome_hmm/class_labels.tsv"
 
 ## Input data:
 * Input data is Operational taxonomic unit (OTU) table csv file.
@@ -26,17 +26,17 @@ This project is designed so that the code runs in Unix-like systems. The writer 
 &nbsp;
 
 # Steps to use the code:
-## Clone code:
+## **Clone code**:
 > git clone https://github.com/iland24/infant_microbiome_hmm
 
-> cd ./infant_gut_microbiome_hmm/
+> cd ./infant_microbiome_hmm/
 
 &nbsp; 
 
 ## Run initiate.py
 * Downloads DMM code zip file
 * Extracts DMM zip file
-* Saves parameters.txt at current working directory (which shoulod be infant_gut_microbiome_hmm). parameters.txt file must be read either by infant_microbiome_hmm.py or infant_microbiome_two_hmm.py to run DMM and HMM
+* Saves parameters.txt at current working directory (which shoulod be infant_microbiome_hmm). parameters.txt file must be read either by infant_microbiome_hmm.py or infant_microbiome_two_hmm.py to run DMM and HMM
 
 &emsp;**sample command:**
 > python3 initiate.py
@@ -49,13 +49,14 @@ This project is designed so that the code runs in Unix-like systems. The writer 
     
 ## Run either single HMM output (a) or two HMM output (b)
 ## &emsp;(a) infant_microbiome_hmm.py (single HMM output script)
-* Preprocesses data 
-    1. Select rows (taxa) with highest variance (User can define fraction of the taxa with highest variance)
-    1. Select 10 timepoint samples of each infant based on start PMA timepoint
-    1. Drop infants with more than 5 missing timepoint samples
-* Runs DMM code to assign states to each sample
-* Combines state outputted by DMM code with infant gut microbiome data
-* Runs HMM 
+-
+  * Preprocesses data 
+      1. Select rows (taxa) with highest variance (User can define fraction of the taxa with highest variance)
+      2. Select 10 timepoint samples of each infant based on start PMA timepoint
+      3. Drop infants with more than 5 missing timepoint samples
+  * Runs DMM code to assign states to each sample
+  * Combines state outputted by DMM code with infant gut microbiome data
+  * Runs HMM 
 
 * **Input**:
     * parameters.txt
@@ -71,15 +72,16 @@ This project is designed so that the code runs in Unix-like systems. The writer 
 &nbsp;
 
 ## &emsp;(b) infant_microbiome_two_hmm.py (two HMM output script)
-* Preprocesses data 
-    * Select rows (taxa) with highest variance (User can define fraction of the taxa with highest variance)
-    * Select 10 timepoint samples of each infant based on start PMA timepoint
-    * Drop infants with more than 5 missing timepoint samples
-* Runs DMM code to assign states to each sample
-* Combines state outputted by DMM code with infant gut microbiome data
-* Separates data into GN and GF sets based on given label data
-* Runs HMM on GN data set
-* Runs HMM on GF data set
+-
+  * Preprocesses data 
+      * Select rows (taxa) with highest variance (User can define fraction of the taxa with highest variance)
+      * Select 10 timepoint samples of each infant based on start PMA timepoint
+      * Drop infants with more than 5 missing timepoint samples
+  * Runs DMM code to assign states to each sample
+  * Combines state outputted by DMM code with infant gut microbiome data
+  * Separates data into GN and GF sets based on given label data
+  * Runs HMM on GN data set
+  * Runs HMM on GF data set
 
 * **Input**:
     * parameters.txt
@@ -93,7 +95,7 @@ This project is designed so that the code runs in Unix-like systems. The writer 
     * hmm_outputs/hmm_out_2
         * HMM output from GF dataset
         
-&emsp;sample command:
+&emsp;**sample command**:
 > python3 infant_microbiome_hmm.py -p './parameters.txt' -l './class_labels.tsv'
 
 &nbsp;
