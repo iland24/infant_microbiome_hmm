@@ -1,0 +1,9 @@
+MicrobeDMMv1.0
+MicrobeDMMv1.0.tar.gz
+__pycache__
+dmm_img_outputs
+dmm_outputs
+hmm_outputs
+parameters_*.txt
+predictions_*.csv
+test.ipynb

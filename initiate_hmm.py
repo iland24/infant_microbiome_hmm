@@ -1,4 +1,6 @@
-import helper_functions_hmm as hf
+# import helper_functions_hmm as hf
+import helper2 as hf
+
 import subprocess
 import os.path
 

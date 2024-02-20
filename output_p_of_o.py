@@ -1,4 +1,5 @@
-import helper_functions_hmm as hf
+import helper as hf
+
 import argparse
 '''
 This script outputs a csv file with infant id as columns 

@@ -1,4 +1,4 @@
-import helper_functions_hmm as hf
+import helper as hf
 import argparse
 
 def main():
@@ -30,7 +30,7 @@ def main():
                                                                                             csv_data_filepath,\
                                                                                             n_states,\
                                                                                             pma_start_date)
-
+    
     data = hf.combine_cluster_and_otu_table(cluster_assignments_df, col_trimmed_train_otu_df)
     
     hf.run_hmm(data, n_states, taxa_names, likelihood_threshold, n_taxa_result_to_be_displayed_in_terminal)

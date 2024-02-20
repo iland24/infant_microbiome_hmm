@@ -1,4 +1,5 @@
-import helper_functions_hmm as hf
+import helper as hf
+
 import argparse
 '''
 This script can be run the same way as infant_microbiome_hmm_main.py except that 
