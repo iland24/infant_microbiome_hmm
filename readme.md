@@ -4,7 +4,7 @@ python 3.7
 Ubuntu 22.04.3 LTS
 ```
 
-#### Background / Purpose:
+### Background / Purpose:
 This project is a Hidden Markov Model (HMM) binary classifier that predicts preborn infants (prematurely born babies) as growth normal (GN) or growth faltering (GF) using the infants' gut microbiome community data collected over time. HMM is used to train on the microbiome data of GN and GF infant data separately, producing two HMM outputs. The two outputs are be used to calculate the probability of observations (P(O)) of test samples, classifiying the samples as GN or GF based on higher P(O) value produced by the two models.
 
 HMM is suitable for modeling sequential or time series data, and, in this project, Infant microbiome data was collected at multiple timepoints, labled using post menstral age (PMA) of the infants. During the microbiome abundance sample collection step, the samples were collected at varying timepoints for each infant, so sampling of 10 PMA timepoints was aligned with all samples as much as possible. Each PMA timepoint is 7 days apart. Due to this reason, some samples had missing timepoint data. However, HMM allows learning a model even when there are missing values by taking into account all possible assignments of the hidden state, considering their probability, making HMM a suitable model for handling clinical data with missing values. 
@@ -23,7 +23,7 @@ The hidden state for each timepoint sample is assigned using MicrobeDMM - Softwa
 * Sample label is given at "infant_microbiome_hmm/data/class_labels.tsv"
 * No test data is provided.
 
-#### Dependencies for DMM
+### DMM Dependencies
 ```
 # install gcc
 sudo apt update
@@ -83,21 +83,21 @@ export LDFLAGS="-L/usr/local/lib"
 └── readme.md
 ```
 
-#### Input data:
+### Input data:
 * Input data is Operational taxonomic unit (OTU) table csv file.
 * OTU table in this project contains abundance of bacteria taxa (data type = float)
 * The first column of OTU should be the "Taxa" column that contains name of bacterial species (data type = string)
 
 &nbsp;
 
-#### Steps to use the code:
-###### **Clone code**:
+### Steps to use the code:
+##### **Clone code**:
 > git clone https://github.com/iland24/infant_microbiome_hmm
 > cd ./infant_microbiome_hmm/
 
 &nbsp; 
 
-#### Run initiate_hmm.py
+### Run initiate_hmm.py
 * Downloads DMM code zip file
 * Extracts DMM zip file
 * Saves parameters.txt at current working directory (which shoulod be infant_microbiome_hmm). parameters.txt file must be read either by infant_microbiome_hmm.py or infant_microbiome_two_hmm.py to run DMM and HMM
@@ -111,14 +111,14 @@ export LDFLAGS="-L/usr/local/lib"
 
 &nbsp;
     
-#### Run single HMM (a) or two HMM (b)
+### Run single HMM (a) or two HMM (b)
 Run single HMM script to train HMM using microbiome abundance timeseries train data in the infant_microbiome_hmm/data directory.
 
 Run two HMM script if there is label file in the infant_microbiome_hmm/data directory along with the training data. Two HMM script will outputs a pair of HMM outputs. Each of the output can be used to calculate the P(O) of test data using the next script.
 
 * The format of the training data and the label file must match the given sample to run these scripts.
 
-##### &emsp;(a) infant_microbiome_hmm.py (single HMM output script)
+#### (a) infant_microbiome_hmm.py (single HMM output script)
 -
   Preprocesses data 
       1. Select rows (taxa) with highest variance (User can define fraction of the taxa with highest variance)
@@ -141,7 +141,7 @@ Run two HMM script if there is label file in the infant_microbiome_hmm/data dire
 
 &nbsp;
 
-##### &emsp;(b) infant_microbiome_two_hmm.py (two HMM output script)
+#### (b) infant_microbiome_two_hmm.py (two HMM output script)
 -
   * Preprocesses data 
       1. Select rows (taxa) with highest variance (User can define fraction of the taxa with highest variance)
@@ -170,7 +170,7 @@ Run two HMM script if there is label file in the infant_microbiome_hmm/data dire
 
 &nbsp;
 
-#### output_p_of_o.py:
+### output_p_of_o.py:
 * Preprocesses test OTU_table.csv file same way input data was preprocessed in infant_microbiome_hmm.py / infant_microbiome_two_hmm.py. 
     * This script does not select rows based on variance. Specific rows (taxa) must be preselected by the user before feeding the test data to this script.
 * Calculates P(O) for all the infants in the test data
@@ -192,7 +192,7 @@ Run two HMM script if there is label file in the infant_microbiome_hmm/data dire
 
 &nbsp;
 
-##### Notes
+### Notes
 * Additional notes are provided in the beginning of the python scripts.
 * Caveats to using DMM code:
   * If problem occur in running DMM code, Error message will be printed out in the terminal: "Error occured while running DMM"
