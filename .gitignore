@@ -1,10 +1,9 @@
-.idea
 .ipynb_checkpoints
-MicrobeDMMv1.0
-MicrobeDMMv1.0.tar.gz
 __pycache__
-dmm_img_outputs
-dmm_outputs
-hmm_outputs
-parameters_*.txt
-predictions_*.csv
+output
+.Rproj.user
+r_test_code
+.Rprofile
+renv.lock
+renv
+ignore
