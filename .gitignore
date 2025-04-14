@@ -7,3 +7,4 @@ r_test_code
 renv.lock
 renv
 ignore
+.DS_Store
